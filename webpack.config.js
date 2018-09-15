@@ -1,15 +1,20 @@
-const path = require('path');
-const VENDOR_LIBS = '';
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+//DEPENDENCIES
+const VENDOR_LIBS = ['jquery'];
 
 const config = {
   entry: {
-    bundle: './src/index.js'
-    //vendor: VENDOR_LIBS
+    bundle: './src/index.js',
+    vendor: VENDOR_LIBS
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js'
-  }/*,
+    filename: '[name].[chunkhash].js'
+  },
+  //MODULES ----------------------------
   module: {
     rules: [
       {
@@ -23,7 +28,21 @@ const config = {
         }
       }
     ]
-  }*/
+  },
+  //ENVIRONEMENT MODE ----------------------------
+  mode: 'development',
+  //PLUGINS ----------------------------
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+  ],
+  //OPTIMIZATION ----------------------------
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 }
 
 module.exports = config;
