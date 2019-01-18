@@ -1,7 +1,7 @@
 const css = require("./styles/styles.scss");
+const test = require("./modules/test");
+import 'normalize.css';
+import "./styles/styles.scss"; 
 
-const test = (message1) => {
-  console.log(message1);
-}
-
-export default test;
+test(1, 3);
+console.log(test);

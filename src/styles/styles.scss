@@ -1,1 +1,5 @@
-@import './componnents/test.scss';
+@import '~normalize.css/normalize';
+@import './base/fonts';
+@import './base/variables';
+@import './base/base';
+@import './componnents/grid-example';
